@@ -27,7 +27,28 @@ Antes de eliminar un contenedor se debe estar seguro que no este corriendo
 ## Volumenes
 Comandos para crear volumenes y mapearlos con contenedores.
 
-- `podman volumen`
+- `podman volumen ls`: Consultar volumenes creados
+- `podman volumen inspect [NombreVolumen]`: Sirve para consultar datos del volumen creado como lo son: name, driver, mountpoint.
+
+~~~
+~$ podman volumen inspect local
+[
+     {
+          "Name": "local",
+          "Driver": "local",
+          "Mountpoint": "/home/marcosrugerio/.local/share/containers/storage/volumes/local/_data",
+          "CreatedAt": "2022-11-16T17:22:10.904595809-06:00",
+          "Labels": {},
+          "Scope": "local",
+          "Options": {},
+          "MountCount": 0,
+          "NeedsCopyUp": true
+     }
+]
+~~~
+
+: Inspeccionar un volumen en especifico.
+
 
 Usar un archivo local y publicarlo en un contenedor
 
