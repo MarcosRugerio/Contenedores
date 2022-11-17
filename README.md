@@ -28,9 +28,19 @@ Antes de eliminar un contenedor se debe estar seguro que no este corriendo
 Comandos para crear volumenes y mapearlos con contenedores.
 
 - `podman volumen ls`: Consultar volumenes creados
-- `podman volumen inspect [NombreVolumen]`: Sirve para consultar datos del volumen creado como lo son: name, driver, mountpoint.
 
-~~~
+```
+~$ podman volume ls
+DRIVER      VOLUME NAME
+local       dac5f27e10f8c791f864170d4030b500450081557ac5f8f9a218dbb9662b35e0
+local       local
+```
+
+- `podman `
+
+- `podman volumen inspect [NombreVolumen]`: Sirve para consultar detalles del volumen creado como lo son: name, driver, mountpoint.
+
+```
 ~$ podman volumen inspect local
 [
      {
@@ -45,11 +55,16 @@ Comandos para crear volumenes y mapearlos con contenedores.
           "NeedsCopyUp": true
      }
 ]
-~~~
+```
 
-: Inspeccionar un volumen en especifico.
+- Compartir un folder local dentro de un contenedor
+```
+~$ podman container run -it -v local:/src ubuntu
+root@e10f10011a10:/# ls /src 
+PODMAN  a  b  c
+  ```
 
-
-Usar un archivo local y publicarlo en un contenedor
-
-- `podman container run -d -v ~/Documents/NGINX/index.html:/usr/share/nginx/html/index.html -p 80:80 nginx`
+- Usar un archivo local y publicarlo en un contenedor
+```
+~$ podman container run -d -v ~/Documents/NGINX/index.html:/usr/share/nginx/html/index.html -p 80:80 nginx
+```
