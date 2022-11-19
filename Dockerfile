@@ -1,4 +1,5 @@
-FROM ubuntu
+ARG DISTRO="ubuntu:18.04"
+FROM ${DISTRO}
 ENV USER Mariela
 RUN mkdir /app
 RUN cd /app && touch data.txt
